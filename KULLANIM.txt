@@ -1,0 +1,20 @@
+LEVEL UP HABIT TRACKER — MOBİL SÜRÜM
+
+DOSYALAR
+- index.html: Uygulamanın kendisi
+- manifest.webmanifest: Telefona ana ekrana eklenme bilgileri
+- sw.js: Çevrimdışı açılış için önbellek
+- icon.svg, icon-192.png, icon-512.png: Uygulama simgeleri
+
+HIZLI KULLANIM
+1. ZIP dosyasını telefona veya bilgisayara çıkar.
+2. index.html dosyasını tarayıcıda açarak deneyebilirsin.
+3. Veriler aynı tarayıcıdaki yerel depolamaya kaydedilir.
+
+ANA EKRANA UYGULAMA OLARAK EKLEME
+Tam PWA kurulum ve çevrimdışı önbellek özellikleri için dosyaların HTTPS destekli bir web adresinde sunulması gerekir. Ardından:
+- Android / Chrome: siteyi aç > ⋮ menüsü > "Ana ekrana ekle" veya "Uygulamayı yükle".
+- iPhone / Safari: siteyi aç > Paylaş > "Ana Ekrana Ekle".
+
+ÖNEMLİ
+Dosyayı doğrudan file:// olarak açmak bazı telefonlarda çalışır, ancak manifest/service worker özellikleri bu modda kısıtlanır. Tiklerin kaybolmaması için tarayıcı verilerini silme ve uygulamadaki "Yedeği indir" düğmesiyle düzenli JSON yedeği al.

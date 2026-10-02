@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0e12">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Level Up">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
+<title>LEVEL UP — Habit Tracker</title>
+<style>
+:root{--bg:#0b0e12;--panel:#121821;--panel2:#18212c;--line:#2b3644;--text:#eef4fb;--muted:#94a3b8;--teal:#35e0c0;--teal2:#0e9f8b;--good:#9af5dc;--red:#ff7f8a;--gold:#f6d477}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 12% 0%,#132b31 0,transparent 34%),var(--bg);color:var(--text);font:14px/1.45 Inter,Segoe UI,Arial,sans-serif}
+button,input,select{font:inherit}button{cursor:pointer;border:1px solid var(--line);background:#202b37;color:var(--text);padding:9px 12px;border-radius:9px;transition:.15s}button:hover{border-color:var(--teal);transform:translateY(-1px)}button.primary{background:var(--teal);color:#061411;border-color:var(--teal);font-weight:800}button.ghost{background:transparent}input,select{background:#0d131a;color:var(--text);border:1px solid var(--line);border-radius:8px;padding:9px;min-width:0}input:focus,select:focus{outline:1px solid var(--teal);border-color:var(--teal)}
+header{height:auto;min-height:76px;padding:16px clamp(14px,3vw,38px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:#0b0e12e8;position:sticky;top:0;z-index:10;backdrop-filter:blur(14px)}
+.brand{display:flex;align-items:center;gap:12px}.logo{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--teal),#167e88);display:grid;place-items:center;color:#061411;font-size:23px;font-weight:1000}.brand h1{margin:0;font-size:18px;letter-spacing:2px}.brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:1.5px;margin-top:2px}.header-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+main{max-width:1600px;margin:auto;padding:22px clamp(12px,2vw,28px) 50px}.hero{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:20px}.eyebrow{color:var(--teal);font-weight:800;font-size:11px;letter-spacing:2px}.hero h2{font-size:clamp(25px,3vw,38px);margin:4px 0 5px;letter-spacing:-1px}.hero p{margin:0;color:var(--muted)}.period{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.period select{min-width:120px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0}.stat,.panel{background:linear-gradient(145deg,#151d27,#10151c);border:1px solid var(--line);border-radius:15px;box-shadow:0 10px 25px #0002}.stat{padding:17px 18px;min-height:118px;position:relative;overflow:hidden}.stat:after{content:"";position:absolute;width:85px;height:85px;border-radius:50%;background:#35e0c012;right:-22px;top:-22px}.stat .label{font-size:11px;color:var(--muted);letter-spacing:1px;font-weight:700}.stat .num{font-size:30px;font-weight:850;letter-spacing:-1px;margin:6px 0}.stat .sub{font-size:12px;color:var(--muted)}.accent{color:var(--teal)}
+.progress-track{height:7px;background:#26313c;border-radius:99px;overflow:hidden;margin-top:10px}.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--teal2),var(--teal));border-radius:99px;transition:width .25s}
+.grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(300px,.85fr);gap:14px}.panel{padding:16px;min-width:0}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}.panel h3{font-size:14px;margin:0;letter-spacing:.7px}.panel-head p{margin:4px 0 0;color:var(--muted);font-size:12px}.tiny{font-size:11px;color:var(--muted)}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:10px;max-height:65vh}.tracker{border-collapse:separate;border-spacing:0;width:max-content;min-width:100%;font-size:12px}.tracker th,.tracker td{border-right:1px solid #293442;border-bottom:1px solid #293442;text-align:center;padding:5px 3px;min-width:31px;background:#121922}.tracker thead th{position:sticky;top:0;z-index:3;background:#202b37;color:#cbd5e1;font-weight:800}.tracker thead tr:first-child th{top:0}.tracker .habit-col{position:sticky;left:0;z-index:4;min-width:180px;width:220px;text-align:left;padding:8px 10px;background:#17212c}.tracker .cat-col{position:sticky;left:180px;z-index:4;min-width:88px;text-align:left;background:#17212c}.tracker thead .habit-col,.tracker thead .cat-col{z-index:6;background:#253342}.tracker .daynum{font-size:11px;color:var(--teal)}.tracker .dow{font-size:10px;color:#9eafc2}.tracker .week-row th{background:#0e9d89;color:#041512;font-size:10px;letter-spacing:1px;padding:6px}.tracker .checkcell{padding:3px 2px}.tick{width:23px;height:23px;border-radius:6px;padding:0;border:1px solid #435365;background:#0e141c;display:inline-grid;place-items:center;color:transparent;font-size:15px;font-weight:900}.tick:hover{transform:none;border-color:var(--teal)}.tick.done{background:var(--teal);border-color:var(--teal);color:#06211c;box-shadow:0 0 10px #35e0c022}.tick.na{color:#526071;background:#17212b}.tracker .rowpct{font-weight:800;color:var(--teal);min-width:58px;background:#17212c}.tracker .rowtotal{min-width:45px;background:#17212c}.tracker tfoot td{background:#17212c;font-weight:800;color:var(--teal);position:sticky;bottom:0;z-index:2}.tracker tfoot .habit-col{z-index:5}.habit-name{display:flex;align-items:center;gap:7px;min-width:0}.habit-emoji{font-size:16px}.habit-title{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:650}.mini-edit{font-size:10px;padding:3px 5px;margin-left:auto;background:transparent;color:var(--muted);border:0}.mini-edit:hover{color:var(--teal)}.cat-pill{font-size:10px;color:#b6c3d3;background:#25313e;padding:3px 6px;border-radius:5px;white-space:nowrap}.daily-bars{display:flex;align-items:flex-end;gap:4px;height:160px;padding:12px 3px 0;border-bottom:1px solid var(--line)}.bar-item{flex:1;min-width:7px;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:5px}.bar{width:min(100%,22px);height:2%;background:linear-gradient(0deg,#087f76,var(--teal));border-radius:4px 4px 0 0;min-height:2px;transition:height .2s}.bar.today{background:linear-gradient(0deg,#d5a83c,#ffe49b)}.bar-label{font-size:9px;color:var(--muted)}.chart-legend{display:flex;justify-content:space-between;color:var(--muted);font-size:11px;margin-top:8px}.side-stack{display:grid;gap:14px;align-content:start}.ring-row{display:flex;align-items:center;gap:18px}.ring{width:126px;height:126px;border-radius:50%;display:grid;place-items:center;position:relative;flex-shrink:0;background:conic-gradient(var(--teal) 0%,#27323e 0)}.ring:before{content:"";position:absolute;inset:12px;background:#121821;border-radius:50%}.ring-center{position:relative;text-align:center}.ring-center strong{font-size:25px;display:block}.ring-center span{font-size:10px;color:var(--muted)}.ring-info{flex:1}.ring-info strong{font-size:18px;display:block}.ring-info span{color:var(--muted);font-size:12px}.week-list{display:grid;gap:10px}.week-item{display:grid;grid-template-columns:55px 1fr 40px;align-items:center;gap:8px;font-size:11px}.week-item .progress-track{margin:0;height:8px}.week-item strong{text-align:right;color:var(--teal)}.top-list{display:grid;gap:9px}.top-item{display:flex;align-items:center;gap:10px}.rank{width:25px;height:25px;border-radius:7px;background:#263541;color:var(--teal);display:grid;place-items:center;font-weight:900;font-size:11px}.top-name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.top-pct{font-weight:800;color:var(--teal)}.bottom-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.quote{font-size:17px;font-weight:750;line-height:1.45}.quote small{display:block;font-size:12px;color:var(--muted);font-weight:400;margin-top:8px}.empty{color:var(--muted);text-align:center;padding:25px}.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);opacity:0;background:#d1fae5;color:#052e26;padding:11px 17px;border-radius:10px;font-weight:800;z-index:99;transition:.2s;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}.modal-back{position:fixed;inset:0;background:#000a;display:none;place-items:center;z-index:50;padding:16px}.modal-back.show{display:grid}.modal{width:min(480px,100%);background:#141c25;border:1px solid var(--line);border-radius:17px;padding:22px;box-shadow:0 25px 70px #0009}.modal h3{margin:0 0 16px;font-size:20px}.form-grid{display:grid;gap:12px}.form-grid label{display:grid;gap:6px;color:#cbd5e1;font-size:12px}.form-grid input,.form-grid select{width:100%}.modal-actions{display:flex;justify-content:space-between;gap:8px;margin-top:18px}.right-actions{display:flex;gap:8px}.footer-note{color:#68778a;font-size:11px;text-align:center;margin-top:24px}
+@media(max-width:950px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.grid{grid-template-columns:1fr}.side-stack{grid-template-columns:repeat(2,minmax(0,1fr))}.bottom-grid{grid-template-columns:1fr}.table-wrap{max-height:none}}
+@media(max-width:580px){header{position:static}.stats{gap:8px}.stat{padding:12px;min-height:100px}.stat .num{font-size:25px}.side-stack{grid-template-columns:1fr}.hero h2{font-size:27px}.tracker .habit-col{min-width:155px;width:155px}.tracker .cat-col{left:155px;min-width:76px}.tracker th,.tracker td{min-width:29px}.tick{width:22px;height:22px}.panel{padding:11px}}
+
+@media(max-width:580px){
+  body{font-size:13px}
+  header{padding-top:calc(12px + env(safe-area-inset-top));padding-bottom:12px}
+  .brand h1{font-size:16px}.logo{width:36px;height:36px}
+  .header-actions{width:100%;display:grid;grid-template-columns:1fr 1fr}
+  .header-actions #addHabitBtn{grid-column:1/-1}
+  .header-actions button{padding:10px 8px;font-size:12px}
+  main{padding:15px 9px calc(28px + env(safe-area-inset-bottom))}
+  .period{width:100%;display:grid;grid-template-columns:42px 1fr 78px 42px}
+  .period select{min-width:0;width:100%}.period input{width:100%!important}
+  .period #todayBtn{grid-column:1/-1}
+  .hero{gap:13px}.hero p{font-size:12px}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stat{min-height:94px;padding:11px}.stat .label{font-size:9px}.stat .num{font-size:24px;margin:4px 0}
+  .panel{padding:10px;border-radius:12px}
+  .panel-head{margin-bottom:10px}
+  .panel h3{font-size:12px}
+  .panel-head p{font-size:11px}
+  .table-wrap{max-height:none;overflow:auto;overscroll-behavior-x:contain}
+  .tracker{font-size:11px}
+  .tracker .habit-col{min-width:142px;width:142px;max-width:142px;padding:6px;left:0}
+  .tracker .cat-col{left:142px;min-width:66px;max-width:66px;padding:4px}
+  .tracker th,.tracker td{min-width:29px;padding:4px 2px}
+  .tracker thead th{font-size:9px}
+  .habit-title{font-size:11px}
+  .habit-emoji{font-size:14px}
+  .cat-pill{font-size:9px;padding:2px 4px;white-space:normal}
+  .tick{width:22px;height:22px;border-radius:5px}
+  .tracker .rowpct{min-width:45px}
+  .daily-bars{gap:2px;height:120px}
+  .bar-label{font-size:8px}
+  .ring{width:104px;height:104px}
+  .ring:before{inset:10px}
+  .ring-center strong{font-size:21px}
+  .ring-row{gap:12px}
+  .week-item{grid-template-columns:48px 1fr 34px}
+  .quote{font-size:15px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><div class="logo">↗</div><div><h1>LEVEL UP</h1><small>YOUR DAILY SYSTEM</small></div></div>
+  <div class="header-actions">
+    <button class="ghost" id="exportBtn">↓ Yedeği indir</button>
+    <button class="ghost" id="importBtn">↑ Yedek yükle</button><input id="importFile" type="file" accept=".json,application/json" hidden>
+    <button class="primary" id="addHabitBtn">＋ Alışkanlık ekle</button>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <div><div class="eyebrow">KÜÇÜK ADIMLAR · BÜYÜK DEĞİŞİM</div><h2 id="monthTitle">Ekim 2026</h2><p>Bugün kendin için ne yaptın? Bir tik bile ilerlemedir.</p></div>
+    <div class="period"><button id="prevMonth" aria-label="Önceki ay">←</button><select id="monthSelect" aria-label="Ay seç"></select><input id="yearInput" type="number" min="2000" max="2100" value="2026" aria-label="Yıl" style="width:92px"><button id="nextMonth" aria-label="Sonraki ay">→</button><button id="todayBtn">Bugün</button></div>
+  </section>
+  <section class="stats">
+    <div class="stat"><div class="label">AYLIK İLERLEME</div><div class="num accent" id="monthlyPct">0%</div><div class="sub" id="monthlySub">Henüz başlangıç çizgisindesin</div><div class="progress-track"><div class="progress-fill" id="monthlyFill"></div></div></div>
+    <div class="stat"><div class="label">TAMAMLANAN TİK</div><div class="num" id="doneCount">0</div><div class="sub" id="doneSub">Bu ay tamamlanan görev</div></div>
+    <div class="stat"><div class="label">BUGÜNÜN SKORU</div><div class="num" id="todayPct">0%</div><div class="sub" id="todaySub">Bugünün alışkanlıkları</div><div class="progress-track"><div class="progress-fill" id="todayFill"></div></div></div>
+    <div class="stat"><div class="label">EN UZUN GÜNLÜK SERİ</div><div class="num" id="streakCount">0 <span style="font-size:14px;color:var(--muted)">gün</span></div><div class="sub">En az bir tik attığın ardışık günler</div></div>
+  </section>
+  <section class="grid">
+    <div class="panel">
+      <div class="panel-head"><div><h3>▦ AYLIK ALIŞKANLIK TABLOSU</h3><p>Bir kutuya tıkla ve tamamlandı olarak işaretle. Verilerin otomatik kaydedilir.</p></div><div class="tiny" id="tableLegend">✓ Tamamlandı · – Atlandı</div></div>
+      <div class="table-wrap"><table class="tracker" id="trackerTable"></table></div>
+      <div class="chart-legend"><span>■ Turkuaz = tamamlandı</span><span id="monthDaysLabel">31 gün</span><span>Oranlar otomatik hesaplanır</span></div>
+    </div>
+    <aside class="side-stack">
+      <div class="panel"><div class="panel-head"><div><h3>DAILY PROGRESS</h3><p>Gün gün tamamlanma oranı</p></div><span class="tiny">0–100%</span></div><div class="daily-bars" id="dailyBars"></div><div class="chart-legend"><span>1. gün</span><span>Ayın son günü →</span></div></div>
+      <div class="panel"><div class="panel-head"><div><h3>MONTHLY STATS</h3><p>Genel tamamlama durumun</p></div></div><div class="ring-row"><div class="ring" id="ring"><div class="ring-center"><strong id="ringPct">0%</strong><span>TAMAMLANDI</span></div></div><div class="ring-info"><strong id="ringDone">0 / 0</strong><span>tamamlanan kutucuk</span><div style="margin-top:10px;color:var(--muted);font-size:12px" id="ringLeft">Başlamak için bir tik at.</div></div></div></div>
+      <div class="panel"><div class="panel-head"><div><h3>WEEKLY PERFORMANCE</h3><p>Hafta hafta karşılaştırma</p></div></div><div class="week-list" id="weekList"></div></div>
+      <div class="panel"><div class="panel-head"><div><h3>TOP HABITS</h3><p>Bu ay en sık tamamladıkların</p></div></div><div class="top-list" id="topList"></div></div>
+    </aside>
+  </section>
+  <section class="bottom-grid">
+    <div class="panel"><div class="panel-head"><div><h3>AYLIK ANALİZ</h3><p>Her alışkanlığın hedef ve başarı oranı</p></div></div><div class="table-wrap" style="max-height:360px"><table class="tracker" id="analysisTable"></table></div></div>
+    <div class="panel"><div class="panel-head"><div><h3>LEVEL UP NOTU</h3><p>İstikrar, mükemmellikten daha önemlidir.</p></div></div><div class="quote" id="motivation">Bugün küçük bir adım at. Gelecekteki sen bunun için teşekkür edecek.<small id="motivationSub">Kendi hızında ilerle; devam etmek yeter.</small></div><div style="margin-top:20px;border-top:1px solid var(--line);padding-top:15px"><div class="panel-head"><h3>AY SONU HEDEFİ</h3><span class="tiny" id="goalLabel">0%</span></div><div class="progress-track" style="height:12px"><div class="progress-fill" id="goalFill"></div></div><p class="tiny" id="goalText">Hedef: aylık %80 tamamlama. Her tik seni yaklaştırır.</p><div style="display:flex;gap:8px;align-items:center;margin-top:12px"><label for="goalInput" class="tiny">Hedef yüzdesi</label><input id="goalInput" type="number" min="1" max="100" value="80" style="width:85px"><button id="saveGoal">Hedefi kaydet</button></div></div></div>
+  </section>
+  <div class="footer-note">LEVEL UP HABIT TRACKER · Verilerin bu tarayıcıda saklanır. Düzenli olarak JSON yedeği indirmeni öneririz.</div>
+</main>
+<div class="modal-back" id="modalBack"><div class="modal"><h3 id="modalTitle">Alışkanlık ekle</h3><div class="form-grid"><label>Alışkanlık adı<input id="habitName" maxlength="60" placeholder="Örn. 20 dakika kitap oku"></label><label>Emoji<input id="habitEmoji" maxlength="4" placeholder="📚"></label><label>Kategori<select id="habitCategory"><option>Disiplin</option><option>Sağlık</option><option>Öğrenme</option><option>Üretkenlik</option><option>Zihin</option><option>Odak</option><option>Kariyer</option><option>Kişisel</option></select></label></div><div class="modal-actions"><button id="deleteHabit" style="display:none;color:var(--red)">Alışkanlığı sil</button><div class="right-actions"><button id="cancelModal">Vazgeç</button><button class="primary" id="saveHabit">Kaydet</button></div></div></div></div>
+<div class="toast" id="toast">Kaydedildi ✓</div>
+<script>
+(() => {
+const STORAGE_KEY='levelUpHabitTracker.v1';
+const months=['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
+const weekdays=['Paz','Pzt','Sal','Çar','Per','Cum','Cmt'];
+const defaultHabits=[
+ {id:'h1',name:"05:00'te uyan",emoji:'⏰',category:'Disiplin'},
+ {id:'h2',name:'Spor / Gym',emoji:'💪',category:'Sağlık'},
+ {id:'h3',name:'Oku / Öğren',emoji:'📚',category:'Öğrenme'},
+ {id:'h4',name:'Gün planı yap',emoji:'🗓️',category:'Üretkenlik'},
+ {id:'h5',name:'Cilt bakımı',emoji:'🫧',category:'Sağlık'},
+ {id:'h6',name:'Proje üzerinde çalış',emoji:'🎯',category:'Kariyer'},
+ {id:'h7',name:'Sosyal medya sınırı',emoji:'📵',category:'Odak'},
+ {id:'h8',name:'Günlük tut',emoji:'✍️',category:'Zihin'},
+ {id:'h9',name:'Esneme / soğuk duş',emoji:'🚿',category:'Sağlık'},
+ {id:'h10',name:'Bir beceri geliştir',emoji:'🧠',category:'Öğrenme'},
+ {id:'h11',name:'Meditasyon',emoji:'🧘',category:'Zihin'},
+ {id:'h12',name:'7+ saat uyu',emoji:'🌙',category:'Sağlık'}
+];
+const now=new Date();
+let state={year:now.getFullYear(),month:now.getMonth(),habits:defaultHabits,checks:{},goal:80};
+let editId=null, toastTimer;
+function load(){try{const raw=localStorage.getItem(STORAGE_KEY);if(raw){const x=JSON.parse(raw);if(x&&Array.isArray(x.habits)&&x.checks){state={...state,...x};}}}catch(e){console.warn('Kayıt okunamadı',e)}}
+function persist(show=false){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));if(show)toast('Kaydedildi ✓')}catch(e){toast('Tarayıcı kaydı başarısız; yedek indir!')}}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),1800)}
+function key(hid,y=state.year,m=state.month,d){return `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}|${hid}`}
+function daysInMonth(){return new Date(state.year,state.month+1,0).getDate()}
+function isDone(hid,d){return state.checks[key(hid,state.year,state.month,d)]==='done'}
+function setCheck(hid,d,val){const k=key(hid,state.year,state.month,d);if(val)state.checks[k]='done';else delete state.checks[k];persist();render()}
+function dayStats(d){const count=state.habits.filter(h=>isDone(h.id,d)).length;return {count,pct:state.habits.length?count/state.habits.length*100:0}}
+function monthStats(){const days=daysInMonth(),possible=state.habits.length*days;let done=0;for(let d=1;d<=days;d++)done+=dayStats(d).count;return {days,possible,done,pct:possible?done/possible*100:0}}
+function streak(){const allDays=[];for(const k of Object.keys(state.checks)){const [date, id]=k.split('|');if(state.checks[k]==='done')allDays.push(date)}const set=new Set(allDays);let best=0,cur=0;const dates=[...set].sort();let prev=null;for(const s of dates){const d=new Date(s+'T12:00:00');if(prev&&Math.round((d-prev)/86400000)===1)cur++;else cur=1;best=Math.max(best,cur);prev=d}return best}
+function render(){
+ const days=daysInMonth(), stats=monthStats();
+ document.getElementById('monthTitle').textContent=`${months[state.month]} ${state.year}`;
+ document.getElementById('monthSelect').value=state.month;
+ document.getElementById('yearInput').value=state.year;
+ document.getElementById('monthDaysLabel').textContent=`${days} gün`;
+ document.getElementById('monthlyPct').textContent=Math.round(stats.pct)+'%';
+ document.getElementById('monthlySub').textContent=stats.pct>=80?'Harika gidiyorsun. Bu ritmi koru!':stats.pct>=50?'Güzel ilerleme. Devam et!':stats.done?'Her tik bir ilerleme. Ritmini kur.':'Başlamak için bugün bir tik at.';
+ document.getElementById('monthlyFill').style.width=stats.pct+'%';
+ document.getElementById('doneCount').textContent=stats.done;
+ document.getElementById('doneSub').textContent=`${stats.possible-stats.done} kutucukluk fırsat kaldı`;
+ const today=new Date(), isCurrent=today.getFullYear()===state.year&&today.getMonth()===state.month;
+ const td=isCurrent?today.getDate():Math.min(today.getDate(),days), ts=dayStats(td);
+ document.getElementById('todayPct').textContent=Math.round(ts.pct)+'%';
+ document.getElementById('todaySub').textContent=isCurrent?'Bugün tamamlanan alışkanlıklar':`${td}. günün tamamlanma oranı`;
+ document.getElementById('todayFill').style.width=ts.pct+'%';
+ document.getElementById('streakCount').innerHTML=streak()+' <span style="font-size:14px;color:var(--muted)">gün</span>';
+ document.getElementById('goalInput').value=state.goal||80;
+ document.getElementById('goalLabel').textContent=Math.round(stats.pct)+'% / '+(state.goal||80)+'%';
+ document.getElementById('goalFill').style.width=Math.min(100,stats.pct/(state.goal||80)*100)+'%';
+ document.getElementById('goalText').textContent=stats.pct>=(state.goal||80)?'Hedefine ulaştın! Yeni bir seviye belirleyebilirsin.':`Hedefe ulaşmak için ${Math.max(0,Math.ceil((state.goal||80)/100*stats.possible-stats.done))} tik daha gerekiyor.`;
+ renderTable(days);renderBars(days);renderWeeks(days);renderTop(days);renderAnalysis(days);renderMotivation(stats);
+}
+function renderTable(days){
+ const table=document.getElementById('trackerTable');let s='<thead><tr class="week-row"><th class="habit-col" rowspan="2">MY HABITS</th><th class="cat-col" rowspan="2">KATEGORİ</th>';
+ for(let d=1;d<=days;d++){s+=`<th colspan="1">${d<=7?'HAFTA 1':d<=14?'HAFTA 2':d<=21?'HAFTA 3':d<=28?'HAFTA 4':'HAFTA 5'}</th>`}
+ s+='<th rowspan="2">TİK</th><th rowspan="2">%</th></tr><tr>';
+ for(let d=1;d<=days;d++){const date=new Date(state.year,state.month,d);s+=`<th><div class="dow">${weekdays[date.getDay()]}</div><div class="daynum">${d}</div></th>`}
+ s+='</tr></thead><tbody>';
+ state.habits.forEach(h=>{let count=0;s+='<tr>';s+=`<td class="habit-col"><div class="habit-name"><span class="habit-emoji">${esc(h.emoji||'✦')}</span><span class="habit-title" title="${esc(h.name)}">${esc(h.name)}</span><button class="mini-edit" data-edit="${h.id}" title="Düzenle">✎</button></div></td><td class="cat-col"><span class="cat-pill">${esc(h.category||'Kişisel')}</span></td>`;
+ for(let d=1;d<=days;d++){const done=isDone(h.id,d);if(done)count++;const date=new Date(state.year,state.month,d);const current=new Date();const isToday=date.toDateString()===current.toDateString();s+=`<td class="checkcell" style="${isToday?'background:#263027':''}"><button class="tick ${done?'done':''}" data-check="${h.id}" data-day="${d}" aria-label="${d}. gün ${esc(h.name)} ${done?'tamamlandı':'tamamlanmadı'}" title="${d}. gün — ${esc(h.name)}">${done?'✓':''}</button></td>`}
+ const pct=days?Math.round(count/days*100):0;s+=`<td class="rowtotal">${count}/${days}</td><td class="rowpct">${pct}%</td></tr>`});
+ s+='</tbody><tfoot><tr><td class="habit-col">GÜNLÜK TAMAMLANMA</td><td class="cat-col">TOPLAM</td>';
+ for(let d=1;d<=days;d++){const st=dayStats(d);s+=`<td title="${st.count}/${state.habits.length} alışkanlık">${Math.round(st.pct)}%</td>`}
+ const stats=monthStats();s+=`<td>${stats.done}</td><td>${Math.round(stats.pct)}%</td></tr></tfoot>`;
+ table.innerHTML=s;
+ table.querySelectorAll('[data-check]').forEach(b=>b.addEventListener('click',()=>setCheck(b.dataset.check,+b.dataset.day,!isDone(b.dataset.check,+b.dataset.day))));
+ table.querySelectorAll('[data-edit]').forEach(b=>b.addEventListener('click',()=>openModal(b.dataset.edit)));
+}
+function renderBars(days){const el=document.getElementById('dailyBars');el.innerHTML='';for(let d=1;d<=days;d++){const pct=dayStats(d).pct;const date=new Date(state.year,state.month,d);const item=document.createElement('div');item.className='bar-item';item.title=`${d} ${months[state.month]}: ${Math.round(pct)}%`;item.innerHTML=`<div class="bar ${date.toDateString()===new Date().toDateString()?'today':''}" style="height:${Math.max(2,pct)}%"></div><div class="bar-label">${d}</div>`;el.appendChild(item)}const st=monthStats();document.getElementById('ring').style.background=`conic-gradient(var(--teal) ${st.pct}%,#27323e ${st.pct}%)`;document.getElementById('ringPct').textContent=Math.round(st.pct)+'%';document.getElementById('ringDone').textContent=`${st.done} / ${st.possible}`;document.getElementById('ringLeft').textContent=st.done===st.possible?'Bütün kutucuklar tamamlandı!':`${st.possible-st.done} tiklik alanın var.`}
+function renderWeeks(days){const el=document.getElementById('weekList');el.innerHTML='';for(let w=0;w<Math.ceil(days/7);w++){const a=w*7+1,b=Math.min(days,a+6);let done=0;for(let d=a;d<=b;d++)done+=dayStats(d).count;const total=(b-a+1)*state.habits.length,pct=total?done/total*100:0;el.innerHTML+=`<div class="week-item"><span>Hafta ${w+1}</span><div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div><strong>${Math.round(pct)}%</strong></div>`}}
+function renderTop(days){const el=document.getElementById('topList');const list=state.habits.map(h=>({h,count:Array.from({length:days},(_,i)=>isDone(h.id,i+1)).filter(Boolean).length})).sort((a,b)=>b.count-a.count).slice(0,5);el.innerHTML=list.length?list.map((x,i)=>`<div class="top-item"><span class="rank">${i+1}</span><span class="top-name">${esc(x.h.emoji||'✦')} ${esc(x.h.name)}</span><span class="top-pct">${Math.round(x.count/days*100)}%</span></div>`).join(''):'<div class="empty">Önce bir alışkanlık ekle.</div>'}
+function renderAnalysis(days){const t=document.getElementById('analysisTable');let s='<thead><tr><th class="habit-col">ALIŞKANLIK</th><th>TAMAMLANAN</th><th>KALAN</th><th>BAŞARI</th></tr></thead><tbody>';state.habits.forEach(h=>{const c=Array.from({length:days},(_,i)=>isDone(h.id,i+1)).filter(Boolean).length;const pct=Math.round(c/days*100);s+=`<tr><td class="habit-col">${esc(h.emoji||'✦')} ${esc(h.name)}</td><td>${c}/${days}</td><td>${days-c}</td><td style="min-width:90px;color:var(--teal);font-weight:800">${pct}%<div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div></td></tr>`});s+='</tbody>';t.innerHTML=s}
+function renderMotivation(st){let msg,sub;if(st.pct>=90){msg='“Disiplin, motivasyonun bittiği yerde başlar.”';sub='Bu ay istikrarın gerçekten güçlü. Bu sistemi sürdür.'}else if(st.pct>=70){msg='“Mükemmel olmak zorunda değilsin; devam etmen yeter.”';sub='İyi bir ritim kuruyorsun. Bir sonraki küçük adıma odaklan.'}else if(st.done>0){msg='“Her tik, verdiğin bir sözü tutmaktır.”';sub='Kaçırdığın günler geçmişte kaldı. Bugün yeniden başlayabilirsin.'}else{msg='“Bir yıl sonra, bugün başlamış olmayı dileme.”';sub='İlk kutucuğunu işaretle. Büyük değişim küçük bir adımla başlar.'}document.getElementById('motivation').childNodes[0].textContent=msg;document.getElementById('motivationSub').textContent=sub}
+function esc(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function openModal(id=null){editId=id;const h=id?state.habits.find(x=>x.id===id):null;document.getElementById('modalTitle').textContent=h?'Alışkanlığı düzenle':'Yeni alışkanlık ekle';document.getElementById('habitName').value=h?.name||'';document.getElementById('habitEmoji').value=h?.emoji||'✨';document.getElementById('habitCategory').value=h?.category||'Kişisel';document.getElementById('deleteHabit').style.display=h?'inline-block':'none';document.getElementById('modalBack').classList.add('show');setTimeout(()=>document.getElementById('habitName').focus(),50)}
+function closeModal(){document.getElementById('modalBack').classList.remove('show')}
+function saveHabit(){const name=document.getElementById('habitName').value.trim();if(!name){toast('Bir alışkanlık adı yaz.');return}const emoji=document.getElementById('habitEmoji').value.trim()||'✨',category=document.getElementById('habitCategory').value;if(editId){const h=state.habits.find(x=>x.id===editId);if(h)Object.assign(h,{name,emoji,category})}else{if(state.habits.length>=30){toast('En fazla 30 alışkanlık ekleyebilirsin.');return}state.habits.push({id:'h'+Date.now().toString(36)+Math.random().toString(36).slice(2,5),name,emoji,category})}persist();closeModal();render();toast('Alışkanlık kaydedildi ✓')}
+function deleteHabit(){if(!editId)return;const h=state.habits.find(x=>x.id===editId);if(!h||!confirm(`“${h.name}” alışkanlığı silinsin mi? Eski tikleri de silinir.`))return;state.habits=state.habits.filter(x=>x.id!==editId);for(const k of Object.keys(state.checks))if(k.endsWith('|'+editId))delete state.checks[k];persist();closeModal();render();toast('Alışkanlık silindi')}
+function changeMonth(delta){state.month+=delta;if(state.month<0){state.month=11;state.year--}if(state.month>11){state.month=0;state.year++}persist();render()}
+function exportData(){const blob=new Blob([JSON.stringify({...state,exportedAt:new Date().toISOString()},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`level-up-yedek-${state.year}-${String(state.month+1).padStart(2,'0')}.json`;a.click();URL.revokeObjectURL(url);toast('Yedek indirildi ✓')}
+function importData(file){if(!file)return;const reader=new FileReader();reader.onload=()=>{try{const x=JSON.parse(reader.result);if(!Array.isArray(x.habits)||!x.checks)throw new Error('invalid');if(!confirm('Mevcut verilerin içe aktarılan yedekle değiştirilsin mi?'))return;state={...state,...x};persist();render();toast('Yedek geri yüklendi ✓')}catch(e){alert('Bu dosya geçerli bir Level Up yedeği değil.')} };reader.readAsText(file)}
+document.getElementById('monthSelect').innerHTML=months.map((m,i)=>`<option value="${i}">${m}</option>`).join('');
+document.getElementById('monthSelect').addEventListener('change',e=>{state.month=+e.target.value;persist();render()});
+document.getElementById('yearInput').addEventListener('change',e=>{const n=+e.target.value;if(n>=2000&&n<=2100){state.year=n;persist();render()}});
+document.getElementById('prevMonth').addEventListener('click',()=>changeMonth(-1));document.getElementById('nextMonth').addEventListener('click',()=>changeMonth(1));
+document.getElementById('todayBtn').addEventListener('click',()=>{state.year=new Date().getFullYear();state.month=new Date().getMonth();persist();render()});
+document.getElementById('addHabitBtn').addEventListener('click',()=>openModal());document.getElementById('cancelModal').addEventListener('click',closeModal);document.getElementById('saveHabit').addEventListener('click',saveHabit);document.getElementById('deleteHabit').addEventListener('click',deleteHabit);
+document.getElementById('modalBack').addEventListener('click',e=>{if(e.target.id==='modalBack')closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s'){e.preventDefault();exportData()}});
+document.getElementById('exportBtn').addEventListener('click',exportData);document.getElementById('importBtn').addEventListener('click',()=>document.getElementById('importFile').click());document.getElementById('importFile').addEventListener('change',e=>importData(e.target.files[0]));
+document.getElementById('saveGoal').addEventListener('click',()=>{const n=+document.getElementById('goalInput').value;if(n<1||n>100){toast('Hedef %1–100 arasında olmalı.');return}state.goal=n;persist();render();toast('Hedef kaydedildi ✓')});
+load();render();
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+}
+})();
+</script>
+</body>
+</html>
