@@ -2,14 +2,7 @@
 <html lang="tr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0b0e12">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Level Up">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" href="icon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="icon.svg">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>LEVEL UP — Habit Tracker</title>
 <style>
 :root{--bg:#0b0e12;--panel:#121821;--panel2:#18212c;--line:#2b3644;--text:#eef4fb;--muted:#94a3b8;--teal:#35e0c0;--teal2:#0e9f8b;--good:#9af5dc;--red:#ff7f8a;--gold:#f6d477}
@@ -24,44 +17,8 @@ main{max-width:1600px;margin:auto;padding:22px clamp(12px,2vw,28px) 50px}.hero{d
 @media(max-width:950px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.grid{grid-template-columns:1fr}.side-stack{grid-template-columns:repeat(2,minmax(0,1fr))}.bottom-grid{grid-template-columns:1fr}.table-wrap{max-height:none}}
 @media(max-width:580px){header{position:static}.stats{gap:8px}.stat{padding:12px;min-height:100px}.stat .num{font-size:25px}.side-stack{grid-template-columns:1fr}.hero h2{font-size:27px}.tracker .habit-col{min-width:155px;width:155px}.tracker .cat-col{left:155px;min-width:76px}.tracker th,.tracker td{min-width:29px}.tick{width:22px;height:22px}.panel{padding:11px}}
 
-@media(max-width:580px){
-  body{font-size:13px}
-  header{padding-top:calc(12px + env(safe-area-inset-top));padding-bottom:12px}
-  .brand h1{font-size:16px}.logo{width:36px;height:36px}
-  .header-actions{width:100%;display:grid;grid-template-columns:1fr 1fr}
-  .header-actions #addHabitBtn{grid-column:1/-1}
-  .header-actions button{padding:10px 8px;font-size:12px}
-  main{padding:15px 9px calc(28px + env(safe-area-inset-bottom))}
-  .period{width:100%;display:grid;grid-template-columns:42px 1fr 78px 42px}
-  .period select{min-width:0;width:100%}.period input{width:100%!important}
-  .period #todayBtn{grid-column:1/-1}
-  .hero{gap:13px}.hero p{font-size:12px}
-  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .stat{min-height:94px;padding:11px}.stat .label{font-size:9px}.stat .num{font-size:24px;margin:4px 0}
-  .panel{padding:10px;border-radius:12px}
-  .panel-head{margin-bottom:10px}
-  .panel h3{font-size:12px}
-  .panel-head p{font-size:11px}
-  .table-wrap{max-height:none;overflow:auto;overscroll-behavior-x:contain}
-  .tracker{font-size:11px}
-  .tracker .habit-col{min-width:142px;width:142px;max-width:142px;padding:6px;left:0}
-  .tracker .cat-col{left:142px;min-width:66px;max-width:66px;padding:4px}
-  .tracker th,.tracker td{min-width:29px;padding:4px 2px}
-  .tracker thead th{font-size:9px}
-  .habit-title{font-size:11px}
-  .habit-emoji{font-size:14px}
-  .cat-pill{font-size:9px;padding:2px 4px;white-space:normal}
-  .tick{width:22px;height:22px;border-radius:5px}
-  .tracker .rowpct{min-width:45px}
-  .daily-bars{gap:2px;height:120px}
-  .bar-label{font-size:8px}
-  .ring{width:104px;height:104px}
-  .ring:before{inset:10px}
-  .ring-center strong{font-size:21px}
-  .ring-row{gap:12px}
-  .week-item{grid-template-columns:48px 1fr 34px}
-  .quote{font-size:15px}
-}
+.once-panel{margin-top:14px}.once-form{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.once-form input{flex:1;min-width:170px}.once-list{display:grid;gap:8px}.once-item{display:flex;align-items:center;gap:10px;padding:10px 12px;background:#17212c;border:1px solid var(--line);border-radius:10px}.once-item input{width:18px;height:18px;accent-color:var(--teal);flex-shrink:0}.once-item .once-name{flex:1;min-width:0;overflow-wrap:anywhere}.once-item.done .once-name{text-decoration:line-through;color:var(--muted)}.once-date{font-size:10px;color:var(--muted);white-space:nowrap}.once-delete{border:0;background:transparent;color:var(--muted);padding:4px 7px}.once-delete:hover{color:var(--red)}.once-summary{display:grid;grid-template-columns:100px 1fr;gap:14px;align-items:center;margin-top:14px;padding:12px;border:1px solid var(--line);border-radius:12px;background:#101720}.once-count{font-size:28px;font-weight:850;color:var(--teal)}.once-count small{display:block;font-size:10px;color:var(--muted);font-weight:500}.once-chart{height:12px;background:#27323e;border-radius:99px;overflow:hidden}.once-chart-fill{height:100%;width:0;background:linear-gradient(90deg,#087f76,var(--teal));border-radius:99px;transition:width .2s}.once-chart-label{display:flex;justify-content:space-between;gap:8px;font-size:11px;color:var(--muted);margin-top:6px}
+
 </style>
 </head>
 <body>
@@ -89,6 +46,12 @@ main{max-width:1600px;margin:auto;padding:22px clamp(12px,2vw,28px) 50px}.hero{d
       <div class="panel-head"><div><h3>▦ AYLIK ALIŞKANLIK TABLOSU</h3><p>Bir kutuya tıkla ve tamamlandı olarak işaretle. Verilerin otomatik kaydedilir.</p></div><div class="tiny" id="tableLegend">✓ Tamamlandı · – Atlandı</div></div>
       <div class="table-wrap"><table class="tracker" id="trackerTable"></table></div>
       <div class="chart-legend"><span>■ Turkuaz = tamamlandı</span><span id="monthDaysLabel">31 gün</span><span>Oranlar otomatik hesaplanır</span></div>
+      <section class="panel once-panel" style="padding:14px 0 0;border:0;background:transparent">
+        <div class="panel-head"><div><h3>✦ TEK SEFERLİK GÖREVLER</h3><p>Bir kez yapman yeterli olan işleri ekle. Tamamlayınca listede üstü çizilir.</p></div><span class="tiny" id="onceMonthLabel">Bu ay: 0 görev</span></div>
+        <form class="once-form" id="onceForm"><input id="onceInput" maxlength="100" placeholder="Örn. Pasaport başvurusu yap" aria-label="Tek seferlik görev adı"><button class="primary" type="submit">＋ Görev ekle</button></form>
+        <div class="once-list" id="onceList"></div>
+        <div class="once-summary"><div class="once-count"><span id="onceCount">0</span><small>BU AY TAMAMLANAN</small></div><div><div class="once-chart"><div class="once-chart-fill" id="onceChartFill"></div></div><div class="once-chart-label"><span id="onceChartCaption">Bu ay henüz görev tamamlanmadı.</span><strong id="onceChartPct">0%</strong></div></div></div>
+      </section>
     </div>
     <aside class="side-stack">
       <div class="panel"><div class="panel-head"><div><h3>DAILY PROGRESS</h3><p>Gün gün tamamlanma oranı</p></div><span class="tiny">0–100%</span></div><div class="daily-bars" id="dailyBars"></div><div class="chart-legend"><span>1. gün</span><span>Ayın son günü →</span></div></div>
@@ -125,9 +88,9 @@ const defaultHabits=[
  {id:'h12',name:'7+ saat uyu',emoji:'🌙',category:'Sağlık'}
 ];
 const now=new Date();
-let state={year:now.getFullYear(),month:now.getMonth(),habits:defaultHabits,checks:{},goal:80};
+let state={year:now.getFullYear(),month:now.getMonth(),habits:defaultHabits,checks:{},goal:80,onceTasks:[]};
 let editId=null, toastTimer;
-function load(){try{const raw=localStorage.getItem(STORAGE_KEY);if(raw){const x=JSON.parse(raw);if(x&&Array.isArray(x.habits)&&x.checks){state={...state,...x};}}}catch(e){console.warn('Kayıt okunamadı',e)}}
+function load(){try{const raw=localStorage.getItem(STORAGE_KEY);if(raw){const x=JSON.parse(raw);if(x&&Array.isArray(x.habits)&&x.checks){state={...state,...x,onceTasks:Array.isArray(x.onceTasks)?x.onceTasks:[]};}}}catch(e){console.warn('Kayıt okunamadı',e)}}
 function persist(show=false){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));if(show)toast('Kaydedildi ✓')}catch(e){toast('Tarayıcı kaydı başarısız; yedek indir!')}}
 function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),1800)}
 function key(hid,y=state.year,m=state.month,d){return `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}|${hid}`}
@@ -158,7 +121,7 @@ function render(){
  document.getElementById('goalLabel').textContent=Math.round(stats.pct)+'% / '+(state.goal||80)+'%';
  document.getElementById('goalFill').style.width=Math.min(100,stats.pct/(state.goal||80)*100)+'%';
  document.getElementById('goalText').textContent=stats.pct>=(state.goal||80)?'Hedefine ulaştın! Yeni bir seviye belirleyebilirsin.':`Hedefe ulaşmak için ${Math.max(0,Math.ceil((state.goal||80)/100*stats.possible-stats.done))} tik daha gerekiyor.`;
- renderTable(days);renderBars(days);renderWeeks(days);renderTop(days);renderAnalysis(days);renderMotivation(stats);
+ renderTable(days);renderBars(days);renderWeeks(days);renderTop(days);renderAnalysis(days);renderMotivation(stats);renderOnceTasks();
 }
 function renderTable(days){
  const table=document.getElementById('trackerTable');let s='<thead><tr class="week-row"><th class="habit-col" rowspan="2">MY HABITS</th><th class="cat-col" rowspan="2">KATEGORİ</th>';
@@ -180,6 +143,23 @@ function renderBars(days){const el=document.getElementById('dailyBars');el.inner
 function renderWeeks(days){const el=document.getElementById('weekList');el.innerHTML='';for(let w=0;w<Math.ceil(days/7);w++){const a=w*7+1,b=Math.min(days,a+6);let done=0;for(let d=a;d<=b;d++)done+=dayStats(d).count;const total=(b-a+1)*state.habits.length,pct=total?done/total*100:0;el.innerHTML+=`<div class="week-item"><span>Hafta ${w+1}</span><div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div><strong>${Math.round(pct)}%</strong></div>`}}
 function renderTop(days){const el=document.getElementById('topList');const list=state.habits.map(h=>({h,count:Array.from({length:days},(_,i)=>isDone(h.id,i+1)).filter(Boolean).length})).sort((a,b)=>b.count-a.count).slice(0,5);el.innerHTML=list.length?list.map((x,i)=>`<div class="top-item"><span class="rank">${i+1}</span><span class="top-name">${esc(x.h.emoji||'✦')} ${esc(x.h.name)}</span><span class="top-pct">${Math.round(x.count/days*100)}%</span></div>`).join(''):'<div class="empty">Önce bir alışkanlık ekle.</div>'}
 function renderAnalysis(days){const t=document.getElementById('analysisTable');let s='<thead><tr><th class="habit-col">ALIŞKANLIK</th><th>TAMAMLANAN</th><th>KALAN</th><th>BAŞARI</th></tr></thead><tbody>';state.habits.forEach(h=>{const c=Array.from({length:days},(_,i)=>isDone(h.id,i+1)).filter(Boolean).length;const pct=Math.round(c/days*100);s+=`<tr><td class="habit-col">${esc(h.emoji||'✦')} ${esc(h.name)}</td><td>${c}/${days}</td><td>${days-c}</td><td style="min-width:90px;color:var(--teal);font-weight:800">${pct}%<div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div></td></tr>`});s+='</tbody>';t.innerHTML=s}
+
+function selectedMonthKey(){return `${state.year}-${String(state.month+1).padStart(2,'0')}`}
+function renderOnceTasks(){
+ const tasks=state.onceTasks||[], list=document.getElementById('onceList');
+ const completedThisMonth=tasks.filter(t=>t.completedAt&&t.completedAt.slice(0,7)===selectedMonthKey()).length;
+ const totalThisMonth=tasks.filter(t=>(t.createdAt||'').slice(0,7)===selectedMonthKey()).length;
+ document.getElementById('onceMonthLabel').textContent=`Bu ay: ${completedThisMonth} tamamlandı`;
+ document.getElementById('onceCount').textContent=completedThisMonth;
+ const pct=totalThisMonth?Math.round(completedThisMonth/totalThisMonth*100):0;
+ document.getElementById('onceChartFill').style.width=pct+'%';
+ document.getElementById('onceChartPct').textContent=pct+'%';
+ document.getElementById('onceChartCaption').textContent=totalThisMonth?`${totalThisMonth} görev eklendi · ${completedThisMonth} tanesi bu ay tamamlandı`:'Bu ay henüz görev eklenmedi.';
+ const sorted=[...tasks].sort((a,b)=>Number(!!a.completedAt)-Number(!!b.completedAt)||(b.createdAt||'').localeCompare(a.createdAt||''));
+ list.innerHTML=sorted.length?sorted.map(t=>`<div class="once-item ${t.completedAt?'done':''}"><input type="checkbox" data-once-check="${t.id}" ${t.completedAt?'checked':''} aria-label="${t.completedAt?'Tamamlandı':'Tamamla'}"><span class="once-name">${esc(t.name)}</span><span class="once-date">${t.completedAt?'✓ '+t.completedAt.slice(0,10):'Bekliyor'}</span><button class="once-delete" data-once-delete="${t.id}" title="Görevi sil" aria-label="Görevi sil">✕</button></div>`).join(''):'<div class="empty">Tek seferlik görevlerini buraya ekleyebilirsin. Tamamlananlar üstü çizili kalır.</div>';
+ list.querySelectorAll('[data-once-check]').forEach(cb=>cb.addEventListener('change',()=>{const task=state.onceTasks.find(t=>t.id===cb.dataset.onceCheck);if(!task)return;task.completedAt=cb.checked?new Date().toISOString().slice(0,10):null;persist();render();if(cb.checked)toast('Tek seferlik görev tamamlandı ✓')}));
+ list.querySelectorAll('[data-once-delete]').forEach(btn=>btn.addEventListener('click',()=>{const task=state.onceTasks.find(t=>t.id===btn.dataset.onceDelete);if(!task)return;if(!confirm(`“${task.name}” görevi silinsin mi?`))return;state.onceTasks=state.onceTasks.filter(t=>t.id!==task.id);persist();render();toast('Görev silindi')}));
+}
 function renderMotivation(st){let msg,sub;if(st.pct>=90){msg='“Disiplin, motivasyonun bittiği yerde başlar.”';sub='Bu ay istikrarın gerçekten güçlü. Bu sistemi sürdür.'}else if(st.pct>=70){msg='“Mükemmel olmak zorunda değilsin; devam etmen yeter.”';sub='İyi bir ritim kuruyorsun. Bir sonraki küçük adıma odaklan.'}else if(st.done>0){msg='“Her tik, verdiğin bir sözü tutmaktır.”';sub='Kaçırdığın günler geçmişte kaldı. Bugün yeniden başlayabilirsin.'}else{msg='“Bir yıl sonra, bugün başlamış olmayı dileme.”';sub='İlk kutucuğunu işaretle. Büyük değişim küçük bir adımla başlar.'}document.getElementById('motivation').childNodes[0].textContent=msg;document.getElementById('motivationSub').textContent=sub}
 function esc(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function openModal(id=null){editId=id;const h=id?state.habits.find(x=>x.id===id):null;document.getElementById('modalTitle').textContent=h?'Alışkanlığı düzenle':'Yeni alışkanlık ekle';document.getElementById('habitName').value=h?.name||'';document.getElementById('habitEmoji').value=h?.emoji||'✨';document.getElementById('habitCategory').value=h?.category||'Kişisel';document.getElementById('deleteHabit').style.display=h?'inline-block':'none';document.getElementById('modalBack').classList.add('show');setTimeout(()=>document.getElementById('habitName').focus(),50)}
@@ -198,11 +178,9 @@ document.getElementById('addHabitBtn').addEventListener('click',()=>openModal())
 document.getElementById('modalBack').addEventListener('click',e=>{if(e.target.id==='modalBack')closeModal()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s'){e.preventDefault();exportData()}});
 document.getElementById('exportBtn').addEventListener('click',exportData);document.getElementById('importBtn').addEventListener('click',()=>document.getElementById('importFile').click());document.getElementById('importFile').addEventListener('change',e=>importData(e.target.files[0]));
+document.getElementById('onceForm').addEventListener('submit',e=>{e.preventDefault();const input=document.getElementById('onceInput');const name=input.value.trim();if(!name){toast('Görev adını yaz.');return}state.onceTasks=state.onceTasks||[];state.onceTasks.push({id:'o'+Date.now().toString(36)+Math.random().toString(36).slice(2,5),name,createdAt:new Date().toISOString().slice(0,10),completedAt:null});input.value='';persist();render();toast('Tek seferlik görev eklendi ✓')});
 document.getElementById('saveGoal').addEventListener('click',()=>{const n=+document.getElementById('goalInput').value;if(n<1||n>100){toast('Hedef %1–100 arasında olmalı.');return}state.goal=n;persist();render();toast('Hedef kaydedildi ✓')});
 load();render();
-if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(()=>{}));
-}
 })();
 </script>
 </body>
