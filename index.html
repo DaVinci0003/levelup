@@ -3,6 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b0e12">
+<meta name="description" content="LEVEL UP kişisel alışkanlık takip uygulaması">
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
+<link rel="apple-touch-icon" href="./icon-192.png">
 <title>LEVEL UP — Habit Tracker</title>
 <style>
 :root{--bg:#0b0e12;--panel:#121821;--panel2:#18212c;--line:#2b3644;--text:#eef4fb;--muted:#94a3b8;--teal:#35e0c0;--teal2:#0e9f8b;--good:#9af5dc;--red:#ff7f8a;--gold:#f6d477}
@@ -181,6 +186,7 @@ document.getElementById('exportBtn').addEventListener('click',exportData);docume
 document.getElementById('onceForm').addEventListener('submit',e=>{e.preventDefault();const input=document.getElementById('onceInput');const name=input.value.trim();if(!name){toast('Görev adını yaz.');return}state.onceTasks=state.onceTasks||[];state.onceTasks.push({id:'o'+Date.now().toString(36)+Math.random().toString(36).slice(2,5),name,createdAt:new Date().toISOString().slice(0,10),completedAt:null});input.value='';persist();render();toast('Tek seferlik görev eklendi ✓')});
 document.getElementById('saveGoal').addEventListener('click',()=>{const n=+document.getElementById('goalInput').value;if(n<1||n>100){toast('Hedef %1–100 arasında olmalı.');return}state.goal=n;persist();render();toast('Hedef kaydedildi ✓')});
 load();render();
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) { window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(err => console.error('Service worker kayıt hatası:', err))); }
 })();
 </script>
 </body>

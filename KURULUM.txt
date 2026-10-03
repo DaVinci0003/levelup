@@ -1,0 +1,10 @@
+LEVEL UP — Mobil uygulama kurulumu
+
+Bu klasördeki TÜM dosyaları mevcut GitHub deposundaki (levelup) ana dizine yükle ve mevcut index.html dosyasının üzerine yaz.
+Gerekli dosyalar: index.html, manifest.json, sw.js, icon-192.png, icon-512.png
+
+Yeni bir GitHub Pages sitesi açma. Aynı siteyi kullan: https://davinci0003.github.io/levelup/
+
+Yükledikten sonra telefonda siteyi tarayıcıda açıp yenile. Android/Chrome'da menüden “Uygulamayı yükle” veya “Ana ekrana ekle” seçeneğini kontrol et. iPhone/Safari'de Paylaş > Ana Ekrana Ekle.
+
+Not: Eski kısayolu silip yeni sürüm yüklendikten sonra tekrar kurmak gerekebilir.
