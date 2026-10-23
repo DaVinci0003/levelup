@@ -1,12 +1,8 @@
-LEVEL UP 2.0 — GitHub Pages kurulum
+LEVEL UP 2.1 — GitHub Pages PWA
 
-1. ZIP dosyasini bilgisayarinda ac.
-2. Icindeki index.html, sw.js, manifest.json, icon-192.png ve icon-512.png dosyalarini mevcut davinci0003/levelup GitHub reposunun kok dizinine yukle; var olan dosyalarin uzerine yaz. Yeni repo acmana gerek yok.
-3. GitHub Pages yayinlamasi bittikten sonra siteyi bilgisayarda Ctrl+Shift+R ile yenile. Telefonda da siteyi yenile.
-4. Eski uygulama verilerini korumak icin bu guncelleme ayni localStorage anahtarini kullanir. Buyuk degisikliklerden once uygulamadaki Yedegi indir dugmesiyle JSON yedegi alman onerilir.
+1) ZIP'i açın. İçindeki dosyaları repo köküne yükleyin (index.html, sw.js, manifest.json ve ikonlar).
+2) GitHub Pages dağıtımını bekleyin.
+3) Telefonda siteyi açıp Chrome'da sert yenileme yapın; gerekirse site verisini silmeden birkaç dakika bekleyip tekrar açın.
+4) İlk kullanımdan önce Ayarlar/menüden JSON yedeği alın. Yedek dosyası mevcut alışkanlıklar, tikler ve su kayıtlarını taşır.
 
-Notlar:
-- Tema paletinde mavi, mor, zumrut yesili, turuncu, pembe ve neon kirmizi bulunur.
-- Bildirimler tarayici izni ister. Bu GitHub Pages surumunde hatirlatmalar sayfa acikken kontrol edilir; tarayici tamamen kapaliyken kesin zamanli bildirim garantisi yoktur.
-- Tarihe ozel gorevleri gunluk plan ekraninda yonetebilirsin. Gecmis gorev durumlari Tamamlandi, Ertele veya Iptal et olarak degistirilebilir.
-- Su gecmisini duzeltmek icin tarih secip o gunun toplam litresini girerek Gecmisi kaydet'e bas.
+Not: Uygulama verileri bu tarayıcının yerel depolamasında tutulur. Bu ZIP mevcut site verilerinizi otomatik olarak taşımaz; uygulamayı güncellemeden önce mevcut uygulamadan JSON yedeği indirin. Bildirimler uygulama açıkken kontrol edilir; arka plan push bildirimi için ayrıca push altyapısı gerekir.
