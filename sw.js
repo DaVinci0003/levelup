@@ -1,4 +1,4 @@
-const CACHE_NAME = "level-up-v8";
+const CACHE_NAME = "level-up-v9";
 const APP_SHELL = ["./", "./index.html", "./manifest.json", "./icon-192.png", "./icon-512.png"];
 
 self.addEventListener("install", event => {
