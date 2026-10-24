@@ -277,7 +277,7 @@ function setupPages(){
  const pageSettings=document.createElement('section');pageSettings.id='page-settings';pageSettings.className='page-section';
  if(hero)pageHab.appendChild(hero);
  const tool=document.createElement('div');tool.className='section-toolbar';tool.innerHTML='<button class="primary" id="archiveToggle">Arşivlenmiş alışkanlıklar</button><button id="undoAction">↶ Son işlemi geri al</button><button id="exportBackup">↓ Verileri yedekle</button><label class="tiny">Yedeği geri yükle <input id="restoreBackup" type="file" accept=".json,application/json" style="max-width:190px"></label>';pageHab.appendChild(tool);
- if(planner)pageHab.appendChild(planner);
+ if(planner)pageHome.appendChild(planner);
  if(grid){const inner=grid.firstElementChild;const water=inner?.querySelector('section.panel');if(water)pageHome.appendChild(water);if(inner)pageHab.appendChild(inner);const aside=grid.querySelector('aside');if(aside)pageHab.appendChild(aside);}
  if(bottom)pageHab.appendChild(bottom);
  if(stats){pageHab.insertBefore(stats,pageHab.firstChild);}
