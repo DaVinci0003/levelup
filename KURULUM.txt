@@ -1,8 +1,10 @@
-LEVEL UP 2.1 — GitHub Pages PWA
+LEVEL UP — Güncelleme paketi
 
-1) ZIP'i açın. İçindeki dosyaları repo köküne yükleyin (index.html, sw.js, manifest.json ve ikonlar).
-2) GitHub Pages dağıtımını bekleyin.
-3) Telefonda siteyi açıp Chrome'da sert yenileme yapın; gerekirse site verisini silmeden birkaç dakika bekleyip tekrar açın.
-4) İlk kullanımdan önce Ayarlar/menüden JSON yedeği alın. Yedek dosyası mevcut alışkanlıklar, tikler ve su kayıtlarını taşır.
+1) ZIP içindeki index.html, sw.js, manifest.json, icon-192.png ve icon-512.png dosyalarını GitHub deposunun kök dizinindeki dosyalarla değiştirin.
+2) Commit edin ve GitHub Pages dağıtımının tamamlanmasını bekleyin.
+3) Telefonda uygulamayı tamamen kapatıp yeniden açın. Chrome/site verilerini SİLMEYİN.
+4) Veriler aynı tarayıcı ve aynı site adresinde levelUpHabitTracker.v1 anahtarıyla tutulur; bu güncelleme depolama anahtarını değiştirmez. Yine de mümkünse güncellemeden önce uygulamadaki Yedeği indir seçeneğiyle JSON yedeği alın.
 
-Not: Uygulama verileri bu tarayıcının yerel depolamasında tutulur. Bu ZIP mevcut site verilerinizi otomatik olarak taşımaz; uygulamayı güncellemeden önce mevcut uygulamadan JSON yedeği indirin. Bildirimler uygulama açıkken kontrol edilir; arka plan push bildirimi için ayrıca push altyapısı gerekir.
+Bu sürümde: animasyonlu yandan menü, seçili tarih üzerinden geçmiş gün takibi, gün düzenleme penceresi, bonus görev satırları, 0,5 L su eklemesinde çift eklemeyi önleme ve #1CE5B2 mint tema seçeneği bulunur.
+
+Bildirim notu: Bildirim izni açık olmalı. Tarayıcı/PWA açıkken hatırlatmalar kontrol edilir. Uygulama tamamen kapalıyken güvenilir zamanlı bildirim göndermek için sunucu destekli push altyapısı gerekir; bu ZIP tek başına bunu sağlayamaz.
